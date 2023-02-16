@@ -1,23 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NaoEncontradaComponent } from './nao-encontrada/nao-encontrada.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
-const routes: Routes =[{ path: 'produtos', loadChildren: () => import('./produtos/produtos.module').then(m => m.ProdutosModule) },
-{path: '', redirectTo: "produtos", pathMatch: "full" },
-{ path: 'carrinho', loadChildren: () => import('./carrinho/carrinho.module').then(m => m.CarrinhoModule) },
-{path: "**", component: NaoEncontradaComponent },
-
+const routes: Routes = [
+  { path: 'products', loadChildren: () => import('./products/products.module').then(m => m.ProductsModule) },
+  { path: '', redirectTo: 'products', pathMatch: 'full' },
+  { path: 'cart', loadChildren: () => import('./cart/cart.module').then(m => m.CartModule) },
+  { path: 'contact', loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule) },
+  { path: 'contact', loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule) },
+  { path: '**', component: NotFoundComponent }
 ];
 
-
-
 @NgModule({
-  declarations: [],
-  imports: [
-    RouterModule.forRoot(routes)
-  ],
-  exports:[
-    RouterModule
-  ]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
-export class AppOutingModule { }
+export class AppRoutingModule { }
